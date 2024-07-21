@@ -16,14 +16,17 @@ export const ManageDraft = ({ blog, index, setStateFunction }) => {
   } = setStateFunction;
   const deleteHandler = async () => {
     try {
-      const response = await fetch("http://localhost:3000/blogs/delete-blog", {
-        method: "POST",
-        body: JSON.stringify({ blogId }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/blogs/delete-blog",
+        {
+          method: "POST",
+          body: JSON.stringify({ blogId }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { message } = await response.json();
       if (!response.ok) throw new Error(message);
       // console.log(message);
@@ -87,14 +90,17 @@ const ManageBlogComponent = ({ blog, index, setStateFunction }) => {
   }, []);
   const deleteHandler = async () => {
     try {
-      const response = await fetch("http://localhost:3000/blogs/delete-blog", {
-        method: "POST",
-        body: JSON.stringify({ blogId }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/blogs/delete-blog",
+        {
+          method: "POST",
+          body: JSON.stringify({ blogId }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { message } = await response.json();
       if (!response.ok) throw new Error(message);
       // console.log(results);

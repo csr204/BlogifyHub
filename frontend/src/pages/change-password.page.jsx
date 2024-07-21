@@ -36,7 +36,7 @@ const ChangePassword = () => {
     const loadingToast = toast.loading("Updating...");
     try {
       const response = await fetch(
-        "http://localhost:3000/users/change-password",
+        import.meta.env.VITE_SERVER + "/users/change-password",
         {
           method: "POST",
           body: JSON.stringify({

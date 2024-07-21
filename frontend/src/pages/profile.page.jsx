@@ -37,7 +37,7 @@ const Profile = () => {
   // console.log("page:", page);
   const getUser = async () => {
     const requestForUser = await fetch(
-      `http://localhost:3000/users/getUser/${requstedUser}`
+      import.meta.env.VITE_SERVER + `/users/getUser/${requstedUser}`
     );
     const detailsOfUser = await requestForUser.json();
     if (detailsOfUser.message === null) {
@@ -50,7 +50,8 @@ const Profile = () => {
     if (requstedUser) {
       try {
         const response = await fetch(
-          `http://localhost:3000/users/getBlogs/${requstedUser}/${page}`
+          import.meta.env.VITE_SERVER +
+            `/users/getBlogs/${requstedUser}/${page}`
         );
         const det = await response.json();
         //det is an obj and the elements are blogs and totalPages,totalPages is a number and blogs is an object

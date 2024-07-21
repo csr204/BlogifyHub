@@ -29,7 +29,7 @@ const CommentField = ({
       return toast.error("comment should atleast have 1 letter");
     }
     // console.log("replying to:", replyingTo);
-    fetch("http://localhost:3000/blogs/add-comment", {
+    fetch(import.meta.env.VITE_SERVER + "/blogs/add-comment", {
       method: "POST",
       body: JSON.stringify({
         blog_author: author,

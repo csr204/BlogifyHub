@@ -25,7 +25,7 @@ const Editor = () => {
   const [textEditor, setTextEditor] = useState({ isReady: false });
   const [Loading, setLoading] = useState(true);
   const fetchDetails = () => {
-    fetch(`http://localhost:3000/blogs/read/${blog_id}`, {
+    fetch(import.meta.env.VITE_SERVER + `/blogs/read/${blog_id}`, {
       method: "POST",
       body: {
         mode: "edit",

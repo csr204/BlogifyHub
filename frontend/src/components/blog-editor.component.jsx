@@ -115,14 +115,17 @@ const BlogEditor = () => {
     let publishingToast = toast.loading("publishing");
     e.target.classList.add("disable");
     try {
-      const response = await fetch("http://localhost:3000/blogs/createBlog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${isLoggedIn.message.token}`,
-        },
-        body: JSON.stringify(draftState),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/blogs/createBlog",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${isLoggedIn.message.token}`,
+          },
+          body: JSON.stringify(draftState),
+        }
+      );
       const message = await response.json();
       console.log(message);
       toast.dismiss(publishingToast);

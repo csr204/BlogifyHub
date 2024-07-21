@@ -22,7 +22,7 @@ const Search = () => {
   const fetchByTag = async (query) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/blogs/search/${query}/${page}`
+        import.meta.env.VITE_SERVER + `/blogs/search/${query}/${page}`
       );
       if (!response.ok) {
         throw new Error("some Internal Error");
@@ -43,7 +43,7 @@ const Search = () => {
   const fetchUsers = async (query) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/blogs/user/${query}/${userPage}`
+        import.meta.env.VITE_SERVER + `/blogs/user/${query}/${userPage}`
       );
       const data = await response.json();
       console.log(data.message);

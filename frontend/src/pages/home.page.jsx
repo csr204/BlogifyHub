@@ -20,7 +20,7 @@ const Home = () => {
   const getLatestBlogs = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/blogs/latest-blogs/${page}`
+        import.meta.env.VITE_SERVER + `/blogs/latest-blogs/${page}`
       );
       const data = await response.json();
       // console.log(data.message);
@@ -36,7 +36,7 @@ const Home = () => {
   const getTrendingBlogs = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/blogs/trending-blogs"
+        import.meta.env.VITE_SERVER + "/blogs/trending-blogs"
       );
       const data = await response.json();
       // console.log(data.message);
@@ -50,7 +50,7 @@ const Home = () => {
   const fetchByTag = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/blogs/category/${currentCat}/${page}/'`
+        import.meta.env.VITE_SERVER + `/blogs/category/${currentCat}/${page}/'`
       );
       const data = await response.json();
       console.log(data);

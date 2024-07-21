@@ -66,7 +66,7 @@ const EditProfile = () => {
         } = userCtx.isLoggedIn;
         try {
           const response = await fetch(
-            "http://localhost:3000/users/edit-profile",
+            import.meta.env.VITE_SERVER + "/users/edit-profile",
             {
               method: "POST",
               body: JSON.stringify({ username }),
@@ -116,7 +116,7 @@ const EditProfile = () => {
         //req to backend
         console.log(img);
         const response = await fetch(
-          "http://localhost:3000/users/profile-pic",
+          import.meta.env.VITE_SERVER + "/users/profile-pic",
           {
             method: "POST",
             body: JSON.stringify({ img }),
@@ -167,14 +167,17 @@ const EditProfile = () => {
     const loadingToast = toast.loading("updating...");
     e.target.setAttribute("disabled", true);
     try {
-      const response = await fetch("http://localhost:3000/users/edit-details", {
-        method: "POST",
-        body: JSON.stringify({ username, bio, social_links }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/users/edit-details",
+        {
+          method: "POST",
+          body: JSON.stringify({ username, bio, social_links }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { message: data } = await response.json();
       if (!response.ok) throw new Error(data);
       console.log(data, userCtx.isLoggedIn.message.user.username);

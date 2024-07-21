@@ -52,7 +52,7 @@ const NotificationCard = ({ notification, index, state }) => {
     e.target.setAttribute("disabled", true);
     try {
       const response = await fetch(
-        "http://localhost:3000/blogs/delete-comment",
+        import.meta.env.VITE_SERVER + "/blogs/delete-comment",
         {
           method: "POST",
           body: JSON.stringify({ _id: commentId }),

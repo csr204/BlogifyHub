@@ -70,7 +70,7 @@ const Navbar = () => {
       const fetchNotificationsStatus = async () => {
         try {
           const response = await fetch(
-            "http://localhost:3000/blogs/get-notifications",
+            import.meta.env.VITE_SERVER + "/blogs/get-notifications",
             {
               headers: { Authorization: `Bearer ${token}` },
             }

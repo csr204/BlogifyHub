@@ -26,7 +26,7 @@ const BlogInteraction = () => {
   //check if user has already liked
   useEffect(() => {
     if (username.length > 0) {
-      fetch("http://localhost:3000/blogs/checklike", {
+      fetch(import.meta.env.VITE_SERVER + "/blogs/checklike", {
         method: "POST",
         body: JSON.stringify({ _id: _id }),
         headers: {
@@ -70,7 +70,7 @@ const BlogInteraction = () => {
       return newBlogState;
     });
     //update on backend
-    fetch("http://localhost:3000/blogs/like", {
+    fetch(import.meta.env.VITE_SERVER + "/blogs/like", {
       method: "POST",
       body: JSON.stringify({ _id: _id, liked: liked }),
       headers: {

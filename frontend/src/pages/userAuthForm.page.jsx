@@ -18,7 +18,7 @@ const Account = ({ type }) => {
   const submitDetails = async (apiRoute, formData) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/auth" + apiRoute,
+        import.meta.env.VITE_SERVER + "/auth" + apiRoute,
         formData
       );
       // console.log(data.message);
@@ -82,7 +82,7 @@ const Account = ({ type }) => {
     // console.log(user);
     try {
       const responseFromBackend = await axios.post(
-        "http://localhost:3000/auth/google",
+        import.meta.env.VITE_SERVER + "/auth/google",
         JSON.stringify(user),
         {
           headers: {

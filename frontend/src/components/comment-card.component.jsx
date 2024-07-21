@@ -108,11 +108,17 @@ const CommentCard = ({ index, leftVal, comment }) => {
     // console.log(comments[parent]);
     hideReplies();
     if (replies.length || skip) {
-      const response = await fetch("http://localhost:3000/blogs/get-replies", {
-        method: "POST",
-        body: JSON.stringify({ _id: skip ? comments[parent]._id : _id, skip }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/blogs/get-replies",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            _id: skip ? comments[parent]._id : _id,
+            skip,
+          }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const { message: replies } = await response.json();
       comment.isReplyLoaded = skip ? comment.isReplyLoaded : true;
       // console.log(replies);
@@ -128,7 +134,7 @@ const CommentCard = ({ index, leftVal, comment }) => {
   };
   const deleteCommentHandler = (e) => {
     e.target.setAttribute("disabled", true);
-    fetch("http://localhost:3000/blogs/delete-comment", {
+    fetch(import.meta.env.VITE_SERVER + "/blogs/delete-comment", {
       method: "POST",
       body: JSON.stringify({ _id }),
       headers: {

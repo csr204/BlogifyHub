@@ -31,20 +31,23 @@ const NotificationCommentField = ({
     }
     // console.log("adding");
     try {
-      const response = await fetch("http://localhost:3000/blogs/add-comment", {
-        method: "POST",
-        body: JSON.stringify({
-          blog_author,
-          comment: commentTyped,
-          blog_id,
-          replyingTo,
-          notificationId,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        import.meta.env.VITE_SERVER + "/blogs/add-comment",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            blog_author,
+            comment: commentTyped,
+            blog_id,
+            replyingTo,
+            notificationId,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { message: data } = await response.json();
       if (!response.ok) {
         throw new Error(data);

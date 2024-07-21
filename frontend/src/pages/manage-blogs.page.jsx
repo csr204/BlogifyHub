@@ -34,7 +34,7 @@ const ManageBlogs = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/users/get-all-blogs",
+        import.meta.env.VITE_SERVER + "/users/get-all-blogs",
         {
           method: "POST",
           body: JSON.stringify({ draft, query, deletedDocs, page }),

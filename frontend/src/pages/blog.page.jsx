@@ -53,7 +53,7 @@ const BlogPage = () => {
   const getBlog = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/blogs/read/${blogId}`,
+        import.meta.env.VITE_SERVER + `/blogs/read/${blogId}`,
         { method: "POST" }
       );
       const message = await response.json();
@@ -62,7 +62,8 @@ const BlogPage = () => {
       }
       if (message.message.title !== "" && message.message.tags.length > 0) {
         const similarBlogsReq = await fetch(
-          `http://localhost:3000/blogs/category/${message.message.tags[0]}/1/${blogId}`
+          import.meta.env.VITE_SERVER +
+            `/blogs/category/${message.message.tags[0]}/1/${blogId}`
         );
         const resultsForSimilarBlogs = await similarBlogsReq.json();
         setSimilarBlogs(resultsForSimilarBlogs.message);

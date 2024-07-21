@@ -26,7 +26,7 @@ const Notification = () => {
       setIsloading(true);
       try {
         const response = await fetch(
-          "http://localhost:3000/blogs/notifications",
+          import.meta.env.VITE_SERVER + "/blogs/notifications",
           {
             method: "POST",
             body: JSON.stringify({ filter: curFilter, page, deletedDocCount }),

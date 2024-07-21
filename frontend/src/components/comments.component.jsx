@@ -14,11 +14,14 @@ export const fetchComments = async ({
   // console.log(skip, blog_id);
   let res;
   try {
-    const response = await fetch("http://localhost:3000/blogs/get-comments", {
-      method: "POST",
-      body: JSON.stringify({ blog_id, skip }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      import.meta.env.VITE_SERVER + "/blogs/get-comments",
+      {
+        method: "POST",
+        body: JSON.stringify({ blog_id, skip }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const commentResult = await response.json();
     commentResult.message.map((comment) => {
       comment.childrenLevel = 0;
