@@ -59,3 +59,4 @@ BlogifyHub is a web application that allows users to write, read, publish, and s
 1. Navigate to `http://localhost:3000` in your browser.
 2. Register for an account or log in.
 3. Create, read, update, or delete blogs using the rich text editor and manage images with Amazon S3.
+Live Link: https://prismatic-hotteok-057e36.netlify.app
