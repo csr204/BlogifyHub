@@ -41,16 +41,19 @@ BlogifyHub is a web application that allows users to write, read, publish, and s
     ```
 
 3. **Set up environment variables:**
-    Create a `.env` file in the root directory and add the following variables:
+    Create a `.env` file in the backend folder and add the following variables:
     ```env
-    PORT=5000
+    PORT=3000
     MONGO_URI=your_mongodb_uri
     AWS_ACCESS_KEY_ID=your_aws_access_key
     AWS_SECRET_ACCESS_KEY=your_aws_secret_key
     S3_BUCKET_NAME=your_s3_bucket_name
     ```
-
-4. **Start the development server:**
+     Create a `.env` file in the frontend folder and add the following variables:
+   ```env
+    VITE_SERVER="your_server_url"
+   ```
+5. **Start the development server:**
     ```bash
     npm run dev
     ```
